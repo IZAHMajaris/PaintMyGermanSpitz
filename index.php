@@ -97,8 +97,6 @@
             ];
         }
 
-        print_r($formularWerteAufbereitet);
-
         $eLokus = 'NN';
         $kLokus = 'NN';
         $aLokus = 'NN';
