@@ -149,13 +149,13 @@
     <label for="toggleSLokus">S-Lokus ein/ausblenden</label>
 
     <div class="eLokus">
-        <img src="images/Wunni%20Kopf.jpg" alt="E-Lokus" style="height:300px;">
+        <img src="images/EE.png" alt="E-Lokus" style="height:300px;">
     </div>
     <div class="kLokus">
-        <img src="images/Wunni%20Kopf.jpg" alt="K-Lokus" style="height:300px;">
+        <img src="images/KBKB.png" alt="K-Lokus" style="height:300px;">
     </div>
     <div class="bLokus">
-        <img src="images/Wunni%20Kopf.jpg" alt="B-Lokus" style="height:300px;">
+        <img src="images/Brown.png" alt="B-Lokus" style="height:300px;">
     </div>
     <div class="dLokus">
         <img src="images/Wunni%20Kopf.jpg" alt="D-Lokus" style="height:300px;">
@@ -164,10 +164,10 @@
         <img src="images/<?php print $aLokus[1] ?>.jpg" alt="A-Lokus" style="height:300px;">
     </div>
     <div class="iLokus">
-        <img src="images/Wunni%20Kopf.jpg" alt="I-Lokus" style="height:300px;">
+        <img src="images/li.png" alt="I-Lokus" style="height:300px;">
     </div>
     <div class="sLokus">
-        <img src="images/Wunni%20Kopf.jpg" alt="S-Lokus" style="height:300px;">
+        <img src="images/SS.png" alt="S-Lokus" style="height:300px;">
     </div>
 
     <table>
