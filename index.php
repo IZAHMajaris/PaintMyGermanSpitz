@@ -50,13 +50,84 @@
 <div>
 
     <form action="index.php" method="get">
-        <p>E Lokus: <input type="text" name="eLokus1" /> | <input type="text" name="eLokus2" /></p>
-        <p>K Lokus: <input type="text" name="kLokus1" /> | <input type="text" name="kLokus2" /></p>
-        <p>A Lokus: <input type="text" name="aLokus1" /> | <input type="text" name="aLokus2" /></p>
-        <p>B Lokus: <input type="text" name="bLokus1" /> | <input type="text" name="bLokus2" /></p>
-        <p>D Lokus: <input type="text" name="dLokus1" /> | <input type="text" name="dLokus2" /></p>
-        <p>I Lokus: <input type="text" name="iLokus1" /> | <input type="text" name="iLokus2" /></p>
-        <p>S Lokus: <input type="text" name="sLokus1" /> | <input type="text" name="sLokus2" /></p>
+        <p>E Lokus:
+            <select name="eLokus1" id="eLokus1">
+                <option value="E">E</option>
+                <option value="e1">e1</option>
+                <option value="N">N</option>
+            </select> | <select name="eLokus2" id="eLokus2">
+                <option value="E">E</option>
+                <option value="e1">e1</option>
+                <option value="N">N</option>
+            </select>
+        </p>
+        <p>K Lokus: <select name="kLokus1" id="kLokus1">
+                <option value="KB">KB</option>
+                <option value="ky">ky</option>
+            </select> | <select name="kLokus2" id="kLokus2">
+                <option value="KB">KB</option>
+                <option value="ky">ky</option>
+            </select>
+        </p>
+        <p>A Lokus: <select name="aLokus1" id="aLokus1">
+                <option value="Ay">Ay</option>
+                <option value="Aw">Aw</option>
+                <option value="at">at</option>
+                <option value="a">a</option>
+                <option value="DY">DY</option>
+                <option value="SY">SY</option>
+                <option value="AG">AG</option>
+                <option value="BS">BS</option>
+                <option value="BB">BB</option>
+            </select> | <select name="aLokus2" id="aLokus2">
+                <option value="Ay">Ay</option>
+                <option value="Aw">Aw</option>
+                <option value="at">at</option>
+                <option value="a">a</option>
+                <option value="DY">DY</option>
+                <option value="SY">SY</option>
+                <option value="AG">AG</option>
+                <option value="BS">BS</option>
+                <option value="BB">BB</option>
+            </select>
+        </p>
+        <p>B Lokus: <select name="bLokus1" id="bLokus1">
+                <option value="bd">bd</option>
+                <option value="bc">bc</option>
+                <option value="bs">bs</option>
+                <option value="N">N</option>
+            </select> | <select name="bLokus2" id="bLokus2">
+                <option value="bd">bd</option>
+                <option value="bc">bc</option>
+                <option value="bs">bs</option>
+                <option value="N">N</option>
+            </select>
+        </p>
+        <p>D Lokus: <select name="dLokus1" id="dLokus1">
+                <option value="D">D</option>
+                <option value="N">N</option>
+            </select> | <select name="dLokus2" id="dLokus2">
+                <option value="D">D</option>
+                <option value="N">N</option>
+            </select>
+        </p>
+        <p>I Lokus: <select name="iLokus1" id="iLokus1">
+                <option value="I">I</option>
+                <option value="i">i</option>
+            </select> | <select name="iLokus2" id="iLokus2">
+                <option value="I">I</option>
+                <option value="i">i</option>
+            </select>
+        </p>
+        <p>S Lokus: <select name="sLokus1" id="sLokus1">
+                <option value="S">S</option>
+                <option value="s">s</option>
+                <option value="N">N</option>
+            </select> | <select name="sLokus2" id="sLokus2">
+                <option value="S">S</option>
+                <option value="s">s</option>
+                <option value="N">N</option>
+            </select></p>
         <input type="submit" value="absenden" />
     </form>
 
@@ -98,20 +169,20 @@
         }
 
         $eLokus = 'NN';
-        $kLokus = 'NN';
+        $kLokus = 'kyky';
         $aLokus = 'NN';
         $bLokus = 'NN';
         $dLokus = 'NN';
-        $iLokus = 'NN';
+        $iLokus = 'II';
         $sLokus = 'NN';
 
-        if(!empty($formularWerteAufbereitet['E'])){
+        if($formularWerteAufbereitet['E'][0] !== ''){
             $eLokus = implode($formularWerteAufbereitet['E']);
         }
-        if(!empty($formularWerteAufbereitet['K'])){
+        if($formularWerteAufbereitet['K'][0] !== ''){
             $kLokus = implode($formularWerteAufbereitet['K']);
         }
-        if(!empty($formularWerteAufbereitet['A'])){
+        if($formularWerteAufbereitet['A'][0] !== ''){
             $aLokus = implode($formularWerteAufbereitet['A']);
             if(preg_match('[Ay|Aw|at]', $aLokus)){
                 $aLokus = $aLokiMapSimple[$formularWerteAufbereitet['A'][0]][$formularWerteAufbereitet['A'][1]];
@@ -119,18 +190,19 @@
                 $aLokus = $aLokiMapAdvanced[$formularWerteAufbereitet['A'][0]][$formularWerteAufbereitet['A'][1]];
             }
         }
-        if(!empty($formularWerteAufbereitet['B'])){
+        if($formularWerteAufbereitet['B'][0] !== ''){
             $bLokus = implode($formularWerteAufbereitet['B']);
         }
-        if(!empty($formularWerteAufbereitet['D'])){
+        if($formularWerteAufbereitet['D'][0] !== ''){
             $dLokus = implode($formularWerteAufbereitet['D']);
         }
-        if(!empty($formularWerteAufbereitet['I'])){
+        if($formularWerteAufbereitet['I'][0] !== ''){
             $iLokus = implode($formularWerteAufbereitet['I']);
         }
-        if(!empty($formularWerteAufbereitet['S'])){
+        if($formularWerteAufbereitet['S'][0] !== ''){
             $sLokus = implode($formularWerteAufbereitet['S']);
         }
+
     ?>
 
     <input type="checkbox" id="toggleELokus">
@@ -148,78 +220,113 @@
     <input type="checkbox" id="toggleSLokus">
     <label for="toggleSLokus">S-Lokus ein/ausblenden</label>
 
-    <div class="eLokus">
-        <img src="images/EE.png" alt="E-Lokus" style="height:300px;">
-    </div>
-    <div class="kLokus">
-        <img src="images/KBKB.png" alt="K-Lokus" style="height:300px;">
-    </div>
-    <div class="bLokus">
-        <img src="images/Brown.png" alt="B-Lokus" style="height:300px;">
-    </div>
-    <div class="dLokus">
-        <img src="images/Wunni%20Kopf.jpg" alt="D-Lokus" style="height:300px;">
-    </div>
-    <div class="aLokus">
-        <img src="images/<?php print $aLokus[1] ?>.jpg" alt="A-Lokus" style="height:300px;">
-    </div>
-    <div class="iLokus">
-        <img src="images/li.png" alt="I-Lokus" style="height:300px;">
-    </div>
-    <div class="sLokus">
-        <img src="images/SS.png" alt="S-Lokus" style="height:300px;">
-    </div>
+    <?php
+        $content = '';
 
-    <table>
-        <tr>
-            <th>Lokus</th>
-            <th>Stati und Hierarchie der Gene</th>
-            <th>Auswirkungen</th>
-            <th>Link zu Labogen Erklärung</th>
-        </tr>
-        <tr>
-            <td>E</td>
-            <td>E > e > N</td>
-            <td>Weiß</td>
-            <td><a href="https://laboklin.com/en/products/genetics/coat-colour-coat-structure-coat-length/dog/e-locus-e1-yellow-lemon-red-cream-apricot/">E Lokus</a></td>
-        </tr>
-        <tr>
-            <td>K</td>
-            <td>Kb > ky > N</td>
-            <td>Schwarz</td>
-            <td><a href="https://laboklin.com/en/products/genetics/coat-colour-coat-structure-coat-length/dog/k-locus-only-the-allele-kb/">K Lokus</a></td>
-        </tr>
-        <tr>
-            <td>B</td>
-            <td>bd, bc, bs > N</td>
-            <td>Braun</td>
-            <td><a href="https://laboklin.com/en/products/genetics/coat-colour-coat-structure-coat-length/dog/b-locus-brown-chocolate-livernose-alleles-bd-bc-bs/">B Lokus</a></td>
-        </tr>
-        <tr>
-            <td>A</td>
-            <td>DY(Ay) > SY(Ay) > AG(Aw) > BS(at) > BB1-3(at) > a</td>
-            <td>Neufarben</td>
-            <td><a href="url">A Lokus Alt</a><br><a href="https://shop.labogen.com/gentest-bestellung/hund/all/2658/a-lokus-agouti-asip-analyse">A Lokus ASIP Analyse</a></td>
-        </tr>
-        <tr>
-            <td>D</td>
-            <td>d1 > a</td>
-            <td>Verwaschungsgen (Macht aus Schwarzem Pigment Silver oder Isabella und Rotes Pigment zu Creme.)</td>
-            <td><a href="https://laboklin.com/en/products/genetics/coat-colour-coat-structure-coat-length/dog/d-locus-d1-dilution/">D Lokus</a></td>
-        </tr>
-        <tr>
-            <td>I</td>
-            <td>I > i</td>
-            <td>Farbintensität (I = viel Farbintensität [Got, Orange, Gelb], i = wenig Farbintensität [Creme, Creme-Weiß, Weiß])</td>
-            <td><a href="https://laboklin.com/en/products/genetics/coat-colour-coat-structure-coat-length/dog/i-locus-phaeomelanin-intensitity/">I Lokus</a></td>
-        </tr>
-        <tr>
-            <td>S</td>
-            <td>S > N</td>
-            <td>Scheckungen</td>
-            <td><a href="https://laboklin.com/en/products/genetics/coat-colour-coat-structure-coat-length/dog/s-locus-piebald-white-spotting/">S Lokus</a></td>
-        </tr>
-    </table>
+        if($aLokus !== 'NN'){
+            $content = '
+                <div class="aLokus">
+                    <img src="images/'.$aLokus[1].'.png" alt="A-Lokus" style="height:300px;">
+                </div>
+            ';
+        }
+        if($kLokus !== 'kyky') {
+            $content .= '
+                <div class="kLokus">
+                    <img src="images/'.$kLokus.'.png" alt="K-Lokus" style="height:300px;">
+                </div>
+            ';
+        }
+        if($eLokus !== 'NN') {
+            $content .= '
+                <div class="eLokus">
+                    <img src="images/'.$eLokus.'.png" alt="E-Lokus" style="height:300px;">
+                </div>
+            ';
+        }
+        if($bLokus !== 'NN') {
+            $content .= '
+                <div class="bLokus">
+                    <img src="images/'.$bLokus.'.png" alt="B-Lokus" style="height:300px;">
+                </div>
+            ';
+        }
+        if($dLokus !== 'NN') {
+            $content .=  '
+               <div class="dLokus">
+                    <img src="images/Brown.png" alt="D-Lokus" style="height:300px;">
+               </div>
+            ';
+        }
+        if($iLokus !== 'II') {
+            $content .=  '
+                <div class="iLokus">
+                    <img src="images/'.$iLokus.'.png" alt="I-Lokus" style="height:300px;">
+                </div>
+            ';
+        }
+        if($sLokus !== 'NN') {
+            $content .=  '
+                <div class="sLokus">
+                    <img src="images/'.$sLokus.'.png" alt="S-Lokus" style="height:300px;">
+                </div>
+            ';
+        }
+
+        echo $content;
+
+    ?>
+
+<!--    <table>-->
+<!--        <tr>-->
+<!--            <th>Lokus</th>-->
+<!--            <th>Stati und Hierarchie der Gene</th>-->
+<!--            <th>Auswirkungen</th>-->
+<!--            <th>Link zu Labogen Erklärung</th>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <td>E</td>-->
+<!--            <td>E > e > N</td>-->
+<!--            <td>Weiß</td>-->
+<!--            <td><a href="https://laboklin.com/en/products/genetics/coat-colour-coat-structure-coat-length/dog/e-locus-e1-yellow-lemon-red-cream-apricot/">E Lokus</a></td>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <td>K</td>-->
+<!--            <td>Kb > ky > N</td>-->
+<!--            <td>Schwarz</td>-->
+<!--            <td><a href="https://laboklin.com/en/products/genetics/coat-colour-coat-structure-coat-length/dog/k-locus-only-the-allele-kb/">K Lokus</a></td>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <td>B</td>-->
+<!--            <td>bd, bc, bs > N</td>-->
+<!--            <td>Braun</td>-->
+<!--            <td><a href="https://laboklin.com/en/products/genetics/coat-colour-coat-structure-coat-length/dog/b-locus-brown-chocolate-livernose-alleles-bd-bc-bs/">B Lokus</a></td>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <td>A</td>-->
+<!--            <td>DY(Ay) > SY(Ay) > AG(Aw) > BS(at) > BB1-3(at) > a</td>-->
+<!--            <td>Neufarben</td>-->
+<!--            <td><a href="url">A Lokus Alt</a><br><a href="https://shop.labogen.com/gentest-bestellung/hund/all/2658/a-lokus-agouti-asip-analyse">A Lokus ASIP Analyse</a></td>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <td>D</td>-->
+<!--            <td>d1 > a</td>-->
+<!--            <td>Verwaschungsgen (Macht aus Schwarzem Pigment Silver oder Isabella und Rotes Pigment zu Creme.)</td>-->
+<!--            <td><a href="https://laboklin.com/en/products/genetics/coat-colour-coat-structure-coat-length/dog/d-locus-d1-dilution/">D Lokus</a></td>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <td>I</td>-->
+<!--            <td>I > i</td>-->
+<!--            <td>Farbintensität (I = viel Farbintensität [Got, Orange, Gelb], i = wenig Farbintensität [Creme, Creme-Weiß, Weiß])</td>-->
+<!--            <td><a href="https://laboklin.com/en/products/genetics/coat-colour-coat-structure-coat-length/dog/i-locus-phaeomelanin-intensitity/">I Lokus</a></td>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <td>S</td>-->
+<!--            <td>S > N</td>-->
+<!--            <td>Scheckungen</td>-->
+<!--            <td><a href="https://laboklin.com/en/products/genetics/coat-colour-coat-structure-coat-length/dog/s-locus-piebald-white-spotting/">S Lokus</a></td>-->
+<!--        </tr>-->
+<!--    </table>-->
 
 </div>
 </body>
