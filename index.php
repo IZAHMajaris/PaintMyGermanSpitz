@@ -153,7 +153,6 @@
             ];
         }
 
-        print_r($formularWerteAufbereitet);
         $eLokus = [0, 0];
         $kLokus = [0, 0];
         $aLokus = [0, 0];
