@@ -244,19 +244,20 @@
 
                     if ($iLokus[1] === 'II') {
                         $content .= '
-                            <div class="iLokus">
+                            <div class="iLokus iLokusUE">
                                 <img src="images/EE_dunkel.png" alt="I-Lokus" style="height:300px;">
                             </div>
                         ';
                     } else if ($iLokus[1] === 'Ii' || $iLokus[1] === 'iI') {
                         $content .= '
-                            <div class="iLokus">
+                            <div class="iLokus iLokusUE">
                                 <img src="images/EE_mittel.png" alt="I-Lokus" style="height:300px;">
                             </div>
                         ';
-                    } else if($iLokus[1] === 'ii') {
+                    }
+                    else if($iLokus[1] === 'ii') {
                         $content .= '
-                            <div class="iLokus">
+                            <div class="iLokus iLokusUE">
                                 <img src="images/EE_hell.png" alt="I-Lokus" style="height:300px;">
                             </div>
                         ';
@@ -272,7 +273,7 @@
 
                     if ($dLokus[1] === 'd1d1') {
                         $content .= '
-                            <div class="dLokus">
+                            <div class="dLokus dLokusUK">
                                 <img src="images/Blue.png" alt="D-Lokus" style="height:300px;">
                             </div>
                         ';
@@ -280,14 +281,14 @@
 
                     if ($bLokus[1] === 'Brown') {
                         $content .= '
-                            <div class="bLokus">
+                            <div class="bLokus bLokusUK">
                                 <img src="images/' . $bLokus[1] . '.png" alt="B-Lokus" style="height:300px;">
                             </div>
                         ';
 
                         if ($dLokus[1] === 'd1d1') {
                             $content .= '
-                            <div class="dLokus">
+                            <div class="dLokus dLokusUB dLokusBUK">
                                 <img src="images/Isabella.png" alt="D-Lokus" style="height:300px;">
                             </div>
                         ';
@@ -304,19 +305,19 @@
 
                     if ($iLokus[1] === 'II') {
                         $content .= '
-                            <div class="iLokus">
+                            <div class="iLokus iLokusUA">
                                 <img src="images/' . ${$nameVariable}[1] . '_dunkel.png" alt="I-Lokus" style="height:300px;">
                             </div>
                         ';
                     } else if ($iLokus[1] === 'Ii' || $iLokus[1] === 'iI') {
                         $content .= '
-                            <div class="iLokus">
+                            <div class="iLokus iLokusUA">
                                 <img src="images/' . ${$nameVariable}[1] . '_mittel.png" alt="I-Lokus" style="height:300px;">
                             </div>
                         ';
                     } else if($iLokus[1] === 'ii') {
                         $content .= '
-                            <div class="iLokus">
+                            <div class="iLokus iLokusUA">
                                 <img src="images/' . ${$nameVariable}[1] . '_hell.png" alt="I-Lokus" style="height:300px;">
                             </div>
                         ';
@@ -326,17 +327,18 @@
                 if ($lokus === 'S') {
                     if($eLokus[1] === 'ee' ){
                         $content .= '
-                            <div class="' . $nameVariable . '">
+                            <div class="' . $nameVariable . ' sLokusUE">
                                 <img src="images/ee.png" alt="' . $lokus . '-Lokus" style="height:300px;">
                             </div>
                         ';
-                    } else {
-                        $content .= '
-                            <div class="' . $nameVariable . '">
-                                <img src="images/' . ${$nameVariable}[1] . '.png" alt="' . $lokus . '-Lokus" style="height:300px;">
-                            </div>
-                        ';
                     }
+
+                    $content .= '
+                        <div class="' . $nameVariable . '">
+                            <img src="images/' . ${$nameVariable}[1] . '.png" alt="' . $lokus . '-Lokus" style="height:300px;">
+                        </div>
+                    ';
+
                 }
             }
         }

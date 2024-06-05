@@ -1,6 +1,12 @@
-input[id=toggleELokus]:checked ~ .eLokus {
+input[id=toggleELokus]:checked ~ .eLokus{
     opacity: 0;
     height: 0;
+    display: none;
+}
+input[id=toggleELokus]:checked ~ .sLokusUE{
+    display: none;
+}
+input[id=toggleELokus]:checked ~ .iLokusUE{
     display: none;
 }
 input[id=toggleKLokus]:checked ~ .kLokus {
@@ -8,14 +14,29 @@ input[id=toggleKLokus]:checked ~ .kLokus {
     height: 0;
     display: none;
 }
+input[id=toggleKLokus]:checked ~ .dLokusUK {
+    display: none;
+}
+input[id=toggleKLokus]:checked ~ .bLokusUK {
+    display: none;
+}
+input[id=toggleKLokus]:checked ~ .dLokusBUK {
+    display: none;
+}
 input[id=toggleALokus]:checked ~ .aLokus {
     opacity: 0;
     height: 0;
     display: none;
 }
+input[id=toggleALokus]:checked ~ .iLokusUA {
+    display: none;
+}
 input[id=toggleBLokus]:checked ~ .bLokus {
     opacity: 0;
     height: 0;
+    display: none;
+}
+input[id=toggleBLokus]:checked ~ .dLokusUB {
     display: none;
 }
 input[id=toggleDLokus]:checked ~ .dLokus {
