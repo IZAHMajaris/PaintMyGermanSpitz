@@ -2,6 +2,7 @@
 <html lang="de">
 <head>
     <title>Paint My German Spitz</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.png">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
