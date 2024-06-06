@@ -347,9 +347,9 @@
 
     ?>
 
-    <br><br>
+    <br>
     <hr>
-    <br><br>
+    <br>
     <table>
         <tr>
             <th>Ebenen</th>
@@ -380,7 +380,7 @@
 <!--            <td><a href="https://laboklin.com/en/products/genetics/coat-colour-coat-structure-coat-length/dog/a-locus-alleles-ay-aw-at-a/">A Lokus Alt</a><br><a href="https://shop.labogen.com/gentest-bestellung/hund/all/2658/a-lokus-agouti-asip-analyse">A Lokus ASIP Analyse</a></td>-->
         </tr>
         <tr>
-            <td rowspan="4">Zusätzliche/überlagernde Gene</td>
+            <td rowspan="4">Zusätzliche/ überlagernde Gene</td>
             <td>B</td>
             <td>bd, bc, bs > N</td>
             <td>Färbt Schwarz zu Braun</td>
@@ -407,5 +407,14 @@
     </table>
 
 </div>
+<br><br>
+<hr>
+<br>
+<div class="ImpresssumButton"><button onclick="showImpressum()">Zum Impressum</button></div>
+<script>
+    function showImpressum() {
+        alert("Content Ersteller & Verwalter: Dorit Wittig, Wenzel-Verner-Str. 71, 09120 Chemnitz, info@mittelspitz-chemnitz.de");
+    }
+</script>
 </body>
 </html>
