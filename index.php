@@ -356,53 +356,53 @@
             <th>Lokus</th>
             <th>Stati und Hierarchie der Gene</th>
             <th>Auswirkungen</th>
-            <th>Link zu Labogen Erklärung</th>
+<!--            <th>Link zu Labogen Erklärung</th>-->
         </tr>
         <tr>
             <td>1te Äußerste Ebene</td>
             <td>E</td>
             <td>N(E) > e1</td>
             <td>Weiß</td>
-            <td><a href="https://laboklin.com/en/products/genetics/coat-colour-coat-structure-coat-length/dog/e-locus-e1-yellow-lemon-red-cream-apricot/">E Lokus</a></td>
+<!--            <td><a href="https://laboklin.com/en/products/genetics/coat-colour-coat-structure-coat-length/dog/e-locus-e1-yellow-lemon-red-cream-apricot/">E Lokus</a></td>-->
         </tr>
         <tr>
             <td>2te Ebene</td>
             <td>K</td>
             <td>Kb > ky</td>
             <td>Schwarz</td>
-            <td><a href="https://laboklin.com/en/products/genetics/coat-colour-coat-structure-coat-length/dog/k-locus-only-the-allele-kb/">K Lokus</a></td>
+<!--            <td><a href="https://laboklin.com/en/products/genetics/coat-colour-coat-structure-coat-length/dog/k-locus-only-the-allele-kb/">K Lokus</a></td>-->
         </tr>
         <tr>
             <td>3te Ebene</td>
             <td>A</td>
             <td>DY(Ay) > SY(Ay) > AG(Aw) > BS(at) > BB1-3(at) > a</td>
             <td>Orange, Orange-Sable, Wolfsfarben/Graugewolkt, Black&Tan</td>
-            <td><a href="https://laboklin.com/en/products/genetics/coat-colour-coat-structure-coat-length/dog/a-locus-alleles-ay-aw-at-a/">A Lokus Alt</a><br><a href="https://shop.labogen.com/gentest-bestellung/hund/all/2658/a-lokus-agouti-asip-analyse">A Lokus ASIP Analyse</a></td>
+<!--            <td><a href="https://laboklin.com/en/products/genetics/coat-colour-coat-structure-coat-length/dog/a-locus-alleles-ay-aw-at-a/">A Lokus Alt</a><br><a href="https://shop.labogen.com/gentest-bestellung/hund/all/2658/a-lokus-agouti-asip-analyse">A Lokus ASIP Analyse</a></td>-->
         </tr>
         <tr>
             <td rowspan="4">Zusätzliche/überlagernde Gene</td>
             <td>B</td>
             <td>bd, bc, bs > N</td>
             <td>Färbt Schwarz zu Braun</td>
-            <td><a href="https://laboklin.com/en/products/genetics/coat-colour-coat-structure-coat-length/dog/b-locus-brown-chocolate-livernose-alleles-bd-bc-bs/">B Lokus</a></td>
+<!--            <td><a href="https://laboklin.com/en/products/genetics/coat-colour-coat-structure-coat-length/dog/b-locus-brown-chocolate-livernose-alleles-bd-bc-bs/">B Lokus</a></td>-->
         </tr>
         <tr>
             <td>D</td>
             <td>d1 > N(B)</td>
             <td>Verwaschungsgen, Macht aus Schwarzem Pigment Silver oder Isabella und Rotes Pigment zu Creme</td>
-            <td><a href="https://laboklin.com/en/products/genetics/coat-colour-coat-structure-coat-length/dog/d-locus-d1-dilution/">D Lokus</a></td>
+<!--            <td><a href="https://laboklin.com/en/products/genetics/coat-colour-coat-structure-coat-length/dog/d-locus-d1-dilution/">D Lokus</a></td>-->
         </tr>
         <tr>
             <td>I</td>
             <td>I > i</td>
             <td>Farbintensität, I = viel Farbintensität [Rot, Orange, Gelb], i = wenig Farbintensität [Creme, Creme-Weiß, Weiß]</td>
-            <td><a href="https://laboklin.com/en/products/genetics/coat-colour-coat-structure-coat-length/dog/i-locus-phaeomelanin-intensitity/">I Lokus</a></td>
+<!--            <td><a href="https://laboklin.com/en/products/genetics/coat-colour-coat-structure-coat-length/dog/i-locus-phaeomelanin-intensitity/">I Lokus</a></td>-->
         </tr>
         <tr>
             <td>S</td>
             <td>S > N</td>
             <td>Scheckunsgen, S|S = Starke Scheckung, N|s = kleinere weiße Abzeichen</td>
-            <td><a href="https://laboklin.com/en/products/genetics/coat-colour-coat-structure-coat-length/dog/s-locus-piebald-white-spotting/">S Lokus</a></td>
+<!--            <td><a href="https://laboklin.com/en/products/genetics/coat-colour-coat-structure-coat-length/dog/s-locus-piebald-white-spotting/">S Lokus</a></td>-->
         </tr>
     </table>
 
