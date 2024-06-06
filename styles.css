@@ -73,3 +73,35 @@ table, th, td {
 th, td {
     padding: 5px;
 }
+
+/* Styles Seite*/
+
+body {
+    background: #242223;
+    font-size: 20px;
+}
+
+div.content {
+    background: #FFCE73;
+    padding: 10px 50px 20px 50px;
+    border-radius: 30px;
+}
+
+div.farbgenetik_content {
+    background: white;
+    padding: 10px 50px 20px 50px;
+    border-radius: 30px;
+}
+
+.ImpresssumButton button {
+    background: #FFCE73;
+    border-radius: 30px;
+    padding: 10px;
+    font-weight: bold;
+}
+
+/* Bilder Diebstahlschutz */
+.jw-album-image img,
+.jw-element-image img { pointer-events: none; -webkit-touch-callout: none; }
+.pswp__share-tooltip
+.pswp__share--download { display: none; }
