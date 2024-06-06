@@ -12,94 +12,138 @@
 </head>
 <body>
 <div class="content">
-    <div class="farbgenetik_content">
-        <form action="index.php" method="get">
-            <p>E Lokus:
-                <select name="eLokus1" id="eLokus1">
-                    <option value="0">keine Auswahl</option>
-                    <option value="N">N(E)</option>
-                    <option value="e1">e1(e)</option>
-                </select> | <select name="eLokus2" id="eLokus2">
-                    <option value="0">keine Auswahl</option>
-                    <option value="N">N(E)</option>
-                    <option value="e1">e1(e)</option>
-                </select>
-            </p>
-            <p>K Lokus: <select name="kLokus1" id="kLokus1">
-                    <option value="0">keine Auswahl</option>
-                    <option value="Kb">Kb</option>
-                    <option value="ky">ky</option>
-                </select> | <select name="kLokus2" id="kLokus2">
-                    <option value="0">keine Auswahl</option>
-                    <option value="Kb">Kb</option>
-                    <option value="ky">ky</option>
-                </select>
-            </p>
-            <p>A Lokus: <select name="aLokus1" id="aLokus1">
-                    <option value="0">keine Auswahl</option>
-                    <option value="DY">DY(Ay)</option>
-                    <option value="SY">SY(Ay)</option>
-                    <option value="AG">AG(Aw)</option>
-                    <option value="BS">BS(at)</option>
-                    <option value="BB">BB(at)</option>
-                    <option value="a">a</option>
-                </select> | <select name="aLokus2" id="aLokus2">
-                    <option value="0">keine Auswahl</option>
-                    <option value="DY">DY(Ay)</option>
-                    <option value="SY">SY(Ay)</option>
-                    <option value="AG">AG(Aw)</option>
-                    <option value="BS">BS(at)</option>
-                    <option value="BB">BB(at)</option>
-                    <option value="a">a</option>
-                </select>
-            </p>
-            <p>B Lokus: <select name="bLokus1" id="bLokus1">
-                    <option value="0">keine Auswahl</option>
-                    <option value="N">N(B)</option>
-                    <option value="bd">bd</option>
-                    <option value="bc">bc</option>
-                    <option value="bs">bs</option>
-                </select> | <select name="bLokus2" id="bLokus2">
-                    <option value="0">keine Auswahl</option>
-                    <option value="N">N(B)</option>
-                    <option value="bd">bd</option>
-                    <option value="bc">bc</option>
-                    <option value="bs">bs</option>
-                </select>
-            </p>
-            <p>D Lokus: <select name="dLokus1" id="dLokus1">
-                    <option value="0">keine Auswahl</option>
-                    <option value="N">N(D)</option>
-                    <option value="d1">d1</option>
-                </select> | <select name="dLokus2" id="dLokus2">
-                    <option value="0">keine Auswahl</option>
-                    <option value="N">N(D)</option>
-                    <option value="d1">d1</option>
-                </select>
-            </p>
-            <p>I Lokus: <select name="iLokus1" id="iLokus1">
-                    <option value="0">keine Auswahl</option>
-                    <option value="I">I</option>
-                    <option value="i">i</option>
-                </select> | <select name="iLokus2" id="iLokus2">
-                    <option value="0">keine Auswahl</option>
-                    <option value="I">I</option>
-                    <option value="i">i</option>
-                </select>
-            </p>
-            <p>S Lokus: <select name="sLokus1" id="sLokus1">
-                    <option value="0">keine Auswahl</option>
-                    <option value="N">N</option>
-                    <option value="S">S</option>
-                </select> | <select name="sLokus2" id="sLokus2">
-                    <option value="0">keine Auswahl</option>
-                    <option value="N">N</option>
-                    <option value="S">S</option>
-                </select></p>
-            <input type="submit" value="absenden" />
-        </form>
+    <?php
+        $formularWerte = $_POST;
 
-        <?php
+        if(!empty($formularWerte) && count($formularWerte)>1){
+            $formularWerteAufbereitet = [
+                'E' => [$formularWerte['eLokus1'], $formularWerte['eLokus2']],
+                'K' => [$formularWerte['kLokus1'], $formularWerte['kLokus2']],
+                'A' => [preg_replace('/(\\d+)/','', $formularWerte['aLokus1']), preg_replace('/(\\d+)/','',$formularWerte['aLokus2'])],
+                'B' => [$formularWerte['bLokus1'], $formularWerte['bLokus2']],
+                'D' => [$formularWerte['dLokus1'], $formularWerte['dLokus2']],
+                'I' => [$formularWerte['iLokus1'], $formularWerte['iLokus2']],
+                'S' => [$formularWerte['sLokus1'], $formularWerte['sLokus2']],
+            ];
+        }
+        $selected = "selected";
+        $false = "false";
+
+        //selected="selected"
+
+        $formularArray = [
+            'eLokus1' => ['none' => '', 'N' => '', 'e1' => ''],
+            'eLokus2' => ['none' => '', 'N' => '', 'e1' => ''],
+            'kLokus1' => ['none' => '', 'Kb' => '', 'ky' => ''],
+            'kLokus2' => ['none' => '', 'Kb' => '', 'ky' => ''],
+            'aLokus1' => ['none' => '', 'DY' => '', 'SY' => '', 'AG' => '', 'BS' => '', 'BB' => '', 'a' => ''],
+            'aLokus2' => ['none' => '', 'DY' => '', 'SY' => '', 'AG' => '', 'BS' => '', 'BB' => '', 'a' => ''],
+            'bLokus1' => ['none' => '', 'N' => '', 'bd' => '', 'bc' => '', 'bs' => ''],
+            'bLokus2' => ['none' => '', 'N' => '', 'bd' => '', 'bc' => '', 'bs' => ''],
+            'dLokus1' => ['none' => '', 'N' => '', 'd1' => ''],
+            'dLokus2' => ['none' => '', 'N' => '', 'd1' => ''],
+            'iLokus1' => ['none' => '', 'I' => '', 'i' => ''],
+            'iLokus2' => ['none' => '', 'I' => '', 'i' => ''],
+            'sLokus1' => ['none' => '', 'N' => '', 'S' => ''],
+            'sLokus2' => ['none' => '', 'N' => '', 'S' => ''],
+        ];
+
+        foreach($formularWerte as $key => $wert){
+            $formularArray[$key][$wert] = 'selected="selected"';
+        }
+
+        $formular = '
+    
+            <div class="farbgenetik_content">
+                <form action="index.php" method="post">
+                    <p>E Lokus:
+                        <select name="eLokus1" id="eLokus1">
+                            <option value="none" '.$formularArray['eLokus1']['none'].'>keine Auswahl</option>
+                            <option value="N" '.$formularArray['eLokus1']['N'].'>N(E)</option>
+                            <option value="e1" '.$formularArray['eLokus1']['e1'].'>e1(e)</option>
+                        </select> | <select name="eLokus2" id="eLokus2">
+                            <option value="none" '.$formularArray['eLokus2']['none'].'>keine Auswahl</option>
+                            <option value="N" '.$formularArray['eLokus2']['N'].'>N(E)</option>
+                            <option value="e1" '.$formularArray['eLokus2']['e1'].'>e1(e)</option>
+                        </select>
+                    </p>
+                    <p>K Lokus: <select name="kLokus1" id="kLokus1">
+                            <option value="none" '.$formularArray['kLokus1']['none'].'>keine Auswahl</option>
+                            <option value="Kb" '.$formularArray['kLokus1']['Kb'].'>Kb</option>
+                            <option value="ky" '.$formularArray['kLokus1']['ky'].'>ky</option>
+                        </select> | <select name="kLokus2" id="kLokus2">
+                            <option value="none" '.$formularArray['kLokus2']['none'].'>keine Auswahl</option>
+                            <option value="Kb" '.$formularArray['kLokus2']['Kb'].'>Kb</option>
+                            <option value="ky" '.$formularArray['kLokus2']['ky'].'>ky</option>
+                        </select>
+                    </p>
+                    <p>A Lokus: <select name="aLokus1" id="aLokus1">
+                            <option value="none" '.$formularArray['aLokus1']['none'].'>keine Auswahl</option>
+                            <option value="DY" '.$formularArray['aLokus1']['DY'].'>DY(Ay)</option>
+                            <option value="SY" '.$formularArray['aLokus1']['SY'].'>SY(Ay)</option>
+                            <option value="AG" '.$formularArray['aLokus1']['AG'].'>AG(Aw)</option>
+                            <option value="BS" '.$formularArray['aLokus1']['BS'].'>BS(at)</option>
+                            <option value="BB" '.$formularArray['aLokus1']['BB'].'>BB(at)</option>
+                            <option value="a" '.$formularArray['aLokus1']['a'].'>a</option>
+                        </select> | <select name="aLokus2" id="aLokus2">
+                            <option value="none" '.$formularArray['aLokus2']['none'].'>keine Auswahl</option>
+                            <option value="DY" '.$formularArray['aLokus2']['DY'].'>DY(Ay)</option>
+                            <option value="SY" '.$formularArray['aLokus2']['SY'].'>SY(Ay)</option>
+                            <option value="AG" '.$formularArray['aLokus2']['AG'].'>AG(Aw)</option>
+                            <option value="BS" '.$formularArray['aLokus2']['BS'].'>BS(at)</option>
+                            <option value="BB" '.$formularArray['aLokus2']['BB'].'>BB(at)</option>
+                            <option value="a" '.$formularArray['aLokus2']['a'].'>a</option>
+                        </select>
+                    </p>
+                    <p>B Lokus: <select name="bLokus1" id="bLokus1">
+                            <option value="none" '.$formularArray['bLokus1']['none'].'>keine Auswahl</option>
+                            <option value="N" '.$formularArray['bLokus1']['N'].'>N(B)</option>
+                            <option value="bd" '.$formularArray['bLokus1']['bd'].'>bd</option>
+                            <option value="bc" '.$formularArray['bLokus1']['bc'].'>bc</option>
+                            <option value="bs" '.$formularArray['bLokus1']['bs'].'>bs</option>
+                        </select> | <select name="bLokus2" id="bLokus2">
+                            <option value="none" '.$formularArray['bLokus2']['none'].'>keine Auswahl</option>
+                            <option value="N" '.$formularArray['bLokus2']['N'].'>N(B)</option>
+                            <option value="bd" '.$formularArray['bLokus2']['bd'].'>bd</option>
+                            <option value="bc" '.$formularArray['bLokus2']['bc'].'>bc</option>
+                            <option value="bs" '.$formularArray['bLokus2']['bs'].'>bs</option>
+                        </select>
+                    </p>
+                    <p>D Lokus: <select name="dLokus1" id="dLokus1">
+                            <option value="none" '.$formularArray['dLokus1']['none'].'>keine Auswahl</option>
+                            <option value="N" '.$formularArray['dLokus1']['N'].'>N(D)</option>
+                            <option value="d1" '.$formularArray['dLokus1']['d1'].'>d1</option>
+                        </select> | <select name="dLokus2" id="dLokus2">
+                            <option value="none" '.$formularArray['dLokus2']['none'].'>keine Auswahl</option>
+                            <option value="N" '.$formularArray['dLokus2']['N'].'>N(D)</option>
+                            <option value="d1" '.$formularArray['dLokus2']['d1'].'>d1</option>
+                        </select>
+                    </p>
+                    <p>I Lokus: <select name="iLokus1" id="iLokus1">
+                            <option value="none" '.$formularArray['iLokus1']['none'].'>keine Auswahl</option>
+                            <option value="I" '.$formularArray['iLokus1']['I'].'>I</option>
+                            <option value="i" '.$formularArray['iLokus1']['i'].'>i</option>
+                        </select> | <select name="iLokus2" id="iLokus2">
+                            <option value="none" '.$formularArray['iLokus2']['none'].'>keine Auswahl</option>
+                            <option value="I" '.$formularArray['iLokus2']['I'].'>I</option>
+                            <option value="i" '.$formularArray['iLokus2']['i'].'>i</option>
+                        </select>
+                    </p>
+                    <p>S Lokus: <select name="sLokus1" id="sLokus1">
+                            <option value="none" '.$formularArray['sLokus1']['none'].'>keine Auswahl</option>
+                            <option value="N" '.$formularArray['sLokus1']['N'].'>N</option>
+                            <option value="S" '.$formularArray['sLokus1']['S'].'>S</option>
+                        </select> | <select name="sLokus2" id="sLokus2">
+                            <option value="none" '.$formularArray['sLokus2']['none'].'>keine Auswahl</option>
+                            <option value="N" '.$formularArray['sLokus2']['N'].'>N</option>
+                            <option value="S" '.$formularArray['sLokus2']['S'].'>S</option>
+                        </select></p>
+                    <input type="submit" value="absenden" />
+                </form>
+            ';
+
+            echo $formular;
+
             $aLokiMapAdvanced = [
               'DY' => ['DY' => ['DYDY', 'DYDY'], 'SY' => ['DYSY', 'DYDY'], 'AG' => ['DYAG', 'DYDY'], 'BS' => ['DYBS', 'DYDY'], 'BB' => ['DYBB', 'DYDY'], 'a' => ['DYa', 'DYDY']],
               'SY' => ['DY' => ['DYSY', 'DYDY'], 'SY' => ['SYSY', 'SYSY'], 'AG' => ['SYAG', 'SYSY'], 'BS' => ['SYBS', 'SYSY'], 'BB' => ['SYBB', 'SYSY'], 'a' => ['SYa', 'SYSY']],
@@ -107,57 +151,34 @@
               'BS' => ['DY' => ['DYBS', 'DYDY'], 'SY' => ['SYBS', 'SYSY'], 'AG' => ['AGBS', 'AGAG'], 'BS' => ['BSBS', 'BSBS'], 'BB' => ['BSBB', 'BSBB'], 'a' => ['BSa', 'BSBB']],
               'BB' => ['DY' => ['DYBB', 'DYDY'], 'SY' => ['SYBB', 'SYSY'], 'AG' => ['AGBB', 'AGAG'], 'BS' => ['BSBB', 'BSBB'], 'BB' => ['BBBB', 'BBBB'], 'a' => ['BBa', 'BBBB']],
               'a'  => ['DY' => ['DYa',  'DYDY'], 'SY' => ['SYa',  'SYSY'], 'AG' => ['AGa',  'AGAG'], 'BS' => ['BSa',  'BSBB'], 'BB' => ['BBa',  'BBBB'], 'a' => ['aa',  'aa']],
-                 0 => [ 0=> [00, 0]],
             ];
             $rulesKLokus = [
                 'Kb' => ['Kb' =>['KbKb', 'KBKB'], 'ky' => ['Kbky', 'KBKB']],
                 'ky' => ['Kb' =>['kyKb', 'KBKB'], 'ky' => ['kyky', 'kyky']],
-                   0 => [ 0=> [00, 0]],
             ];
             $rulesELokus = [
                 'e1' =>['e1' =>['e1e1', 'NN'], 'N' => ['e1N', 'NN']],
                 'N' =>['e1' =>['Ne1', 'NN'], 'N' =>['NN', 'ee']],
-                0 => [ 0=> [00, 0]],
             ];
             $rulesDLokus = [
                 'd1' =>['d1' =>['d1d1', 'd1d1'], 'N' =>['d1N', 'NN']],
                 'N' =>['d1' =>['Nd1', 'NN'], 'N' =>['NN', 'NN']],
-                  0 => [ 0=> [00, 0]],
             ];
             $rulesBLokus = [
                 'bd' => ['bd' =>['bdbd', 'Brown'], 'bc' =>['bdbc', 'Brown'], 'bs' =>['bdbs', 'Brown'], 'N' =>['bdN', 'NN']],
                 'bc' => ['bd' =>['bcbd', 'Brown'], 'bc' =>['bcbc', 'Brown'], 'bs' =>['bcbs', 'Brown'], 'N' =>['bcN', 'NN']],
                 'bs' => ['bd' =>['bsbd', 'Brown'], 'bc' =>['bsbc', 'Brown'], 'bs' =>['bsbs', 'Brown'], 'N' =>['bsN', 'NN']],
                 'N' => ['bd' =>['Nbd', 'NN'], 'bc' =>['Nbc', 'NN'], 'bs' =>['Nbs', 'NN'], 'N' =>['NN', 'NN']],
-                  0 => [ 0=> [00, 0]],
             ];
             $rulesILokus = [
                 'I' => ['I'=>['II', 'II'], 'i'=>['Ii', 'Ii']],
                 'i' => ['I'=>['iI', 'Ii'], 'i' =>['ii', 'ii']],
-                  0 => [ 0=> [00, 0]],
             ];
 
             $rulesSLokus = [
                 'N' => ['N'=>['NN', 'NN'], 'S'=>['NS', 'NS']],
                 'S' => ['N'=>['SN', 'NS'], 'S' =>['SS', 'SS']],
-                  0 => [ 0=> [00, 0]],
             ];
-
-
-            $formularWerte = $_GET;
-            $formularWerteAufbereitet = [];
-
-            if(!empty($formularWerte) && count($formularWerte)>1){
-                $formularWerteAufbereitet = [
-                    'E' => [$formularWerte['eLokus1'], $formularWerte['eLokus2']],
-                    'K' => [$formularWerte['kLokus1'], $formularWerte['kLokus2']],
-                    'A' => [preg_replace('/(\\d+)/','', $formularWerte['aLokus1']), preg_replace('/(\\d+)/','',$formularWerte['aLokus2'])],
-                    'B' => [$formularWerte['bLokus1'], $formularWerte['bLokus2']],
-                    'D' => [$formularWerte['dLokus1'], $formularWerte['dLokus2']],
-                    'I' => [$formularWerte['iLokus1'], $formularWerte['iLokus2']],
-                    'S' => [$formularWerte['sLokus1'], $formularWerte['sLokus2']],
-                ];
-            }
 
             $eLokus = [0, 0];
             $kLokus = [0, 0];
@@ -167,25 +188,26 @@
             $iLokus = [0, 0];
             $sLokus = [0, 0];
 
-            if(!empty($formularWerteAufbereitet) && $formularWerteAufbereitet['E'][0] !== '' ){
+            print_r($formularWerteAufbereitet);
+            if(!empty($formularWerteAufbereitet) && ($formularWerteAufbereitet['E'][0] !== 'none' || $formularWerteAufbereitet['E'][1] !== 'none')){
                 $eLokus = $rulesELokus[$formularWerteAufbereitet['E'][0]][$formularWerteAufbereitet['E'][1]];
             }
-            if(!empty($formularWerteAufbereitet) && $formularWerteAufbereitet['K'][0] !== ''){
+            if(!empty($formularWerteAufbereitet)){
                 $kLokus = $rulesKLokus[$formularWerteAufbereitet['K'][0]][$formularWerteAufbereitet['K'][1]];
             }
-            if(!empty($formularWerteAufbereitet) && $formularWerteAufbereitet['A'][0] !== ''){
+            if(!empty($formularWerteAufbereitet)){
                 $aLokus = $aLokiMapAdvanced[$formularWerteAufbereitet['A'][0]][$formularWerteAufbereitet['A'][1]];
             }
-            if(!empty($formularWerteAufbereitet) && $formularWerteAufbereitet['B'][0] !== ''){
+            if(!empty($formularWerteAufbereitet)){
                 $bLokus = $rulesBLokus[$formularWerteAufbereitet['B'][0]][$formularWerteAufbereitet['B'][1]];
             }
-            if(!empty($formularWerteAufbereitet) && $formularWerteAufbereitet['D'][0] !== ''){
+            if(!empty($formularWerteAufbereitet)){
                 $dLokus = $rulesDLokus[$formularWerteAufbereitet['D'][0]][$formularWerteAufbereitet['D'][1]];
             }
-            if(!empty($formularWerteAufbereitet) && $formularWerteAufbereitet['I'][0] !== ''){
+            if(!empty($formularWerteAufbereitet)){
                 $iLokus = $rulesILokus[$formularWerteAufbereitet['I'][0]][$formularWerteAufbereitet['I'][1]];
             }
-            if(!empty($formularWerteAufbereitet) && $formularWerteAufbereitet['S'][0] !== ''){
+            if(!empty($formularWerteAufbereitet)){
                 $sLokus = $rulesSLokus[$formularWerteAufbereitet['S'][0]][$formularWerteAufbereitet['S'][1]];
             }
 
