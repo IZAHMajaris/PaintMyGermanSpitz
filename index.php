@@ -157,8 +157,8 @@
                 'ky' => ['Kb' =>['kyKb', 'KBKB'], 'ky' => ['kyky', 'kyky']],
             ];
             $rulesELokus = [
-                'e1' =>['e1' =>['e1e1', 'NN'], 'N' => ['e1N', 'NN']],
-                'N' =>['e1' =>['Ne1', 'NN'], 'N' =>['NN', 'ee']],
+                'e1' =>['e1' =>['e1e1', 'DYDY'], 'N' => ['e1N', 'NN']],
+                'N' =>['e1' =>['Ne1', 'NN'], 'N' =>['NN', 'NN']],
             ];
             $rulesDLokus = [
                 'd1' =>['d1' =>['d1d1', 'd1d1'], 'N' =>['d1N', 'NN']],
@@ -188,36 +188,32 @@
             $iLokus = [0, 0];
             $sLokus = [0, 0];
 
-            print_r($formularWerteAufbereitet);
-            if(!empty($formularWerteAufbereitet) && ($formularWerteAufbereitet['E'][0] !== 'none' || $formularWerteAufbereitet['E'][1] !== 'none')){
+            if(!empty($formularWerteAufbereitet) && $formularWerteAufbereitet['E'][0] !== 'none' && $formularWerteAufbereitet['E'][1] !== 'none'){
                 $eLokus = $rulesELokus[$formularWerteAufbereitet['E'][0]][$formularWerteAufbereitet['E'][1]];
             }
-            if(!empty($formularWerteAufbereitet)){
+            if(!empty($formularWerteAufbereitet) && $formularWerteAufbereitet['K'][0] !== 'none' && $formularWerteAufbereitet['K'][1] !== 'none'){
                 $kLokus = $rulesKLokus[$formularWerteAufbereitet['K'][0]][$formularWerteAufbereitet['K'][1]];
             }
-            if(!empty($formularWerteAufbereitet)){
+            if(!empty($formularWerteAufbereitet) && $formularWerteAufbereitet['A'][0] !== 'none' && $formularWerteAufbereitet['A'][1] !== 'none'){
                 $aLokus = $aLokiMapAdvanced[$formularWerteAufbereitet['A'][0]][$formularWerteAufbereitet['A'][1]];
             }
-            if(!empty($formularWerteAufbereitet)){
+            if(!empty($formularWerteAufbereitet) && $formularWerteAufbereitet['B'][0] !== 'none' && $formularWerteAufbereitet['B'][1] !== 'none'){
                 $bLokus = $rulesBLokus[$formularWerteAufbereitet['B'][0]][$formularWerteAufbereitet['B'][1]];
             }
-            if(!empty($formularWerteAufbereitet)){
+            if(!empty($formularWerteAufbereitet) && $formularWerteAufbereitet['D'][0] !== 'none' && $formularWerteAufbereitet['D'][1] !== 'none'){
                 $dLokus = $rulesDLokus[$formularWerteAufbereitet['D'][0]][$formularWerteAufbereitet['D'][1]];
             }
-            if(!empty($formularWerteAufbereitet)){
+            if(!empty($formularWerteAufbereitet) && $formularWerteAufbereitet['I'][0] !== 'none' && $formularWerteAufbereitet['I'][1] !== 'none'){
                 $iLokus = $rulesILokus[$formularWerteAufbereitet['I'][0]][$formularWerteAufbereitet['I'][1]];
             }
-            if(!empty($formularWerteAufbereitet)){
+            if(!empty($formularWerteAufbereitet) && $formularWerteAufbereitet['S'][0] !== 'none' && $formularWerteAufbereitet['S'][1] !== 'none'){
                 $sLokus = $rulesSLokus[$formularWerteAufbereitet['S'][0]][$formularWerteAufbereitet['S'][1]];
             }
 
-        ?>
-
-        <?php
             $content = '';
 
             $noneVisible = [
-                'E' => ['e1e1', 'Ne1', 'e1N', 'N', 0],
+                'E' => ['NN', 'Ne1', 'e1N', 'N', 0],
                 'K' => ['kyky', 'N', 'k', 0],
                 'A' => ['NN', 'N', 0],
                 'B' => ['NN', 'Nbs', 'Nbd', 'Nbc', 'bdN', 'bcN', 'bsN', 'N', 0],
@@ -236,16 +232,32 @@
                 $value = (is_array(${$nameVariable}))? ${$nameVariable}[0] : ${$nameVariable};
 
                 if(!in_array($value, $notVisible, true)){
-                    $content .= '
-                        <b>'.$lokus.' Lokus '.$value.'</b>  
-                        <input type="checkbox" id="toggle'.$nameToggle.'">
-                        <label for="toggle'.$nameToggle.'">Ebene ein/ausblenden</label><br>
-                    ';
+                    if ($lokus === 'A'){
+                        $content .= '
+                            <b>'.$lokus.' Lokus '.$value.'</b> - Lokus ist immer sichtbar<br>
+                        ';
+                    } else {
+                        $content .= '
+                            <b>'.$lokus.' Lokus '.$value.'</b>  
+                            <input type="checkbox" id="toggle'.$nameToggle.'">
+                            <label for="toggle'.$nameToggle.'">Ebene ein/ausblenden</label><br>
+                        ';
+                    }
                 } else {
                     if($value === 0){
                         $content .= '<b>'.$lokus.' Lokus</b> - wurde nicht ausgewählt<br>';
                     } else {
-                        $content .= '<b>'.$lokus.' Lokus '.$value.'</b> - Lokus ist Phänotypisch nicht sichtbar<br>';
+                        if($lokus === 'E' || $lokus === 'K'){
+                            $darunterliegenderLokus = '';
+                            if ($lokus === 'E') {
+                                $darunterliegenderLokus = 'K Lokus';
+                            }else{
+                                $darunterliegenderLokus = 'A Lokus';
+                            }
+                            $content .= '<b>'.$lokus.' Lokus '.$value.'</b> - Lokus ist durchlässig und zeigt darunter liegenden '. $darunterliegenderLokus .'<br>';
+                        } else {
+                            $content .= '<b>'.$lokus.' Lokus '.$value.'</b>  - wird nicht Ausgeprägt da kein Träger<br>';
+                        }
                     }
                 }
             }
@@ -253,9 +265,7 @@
             //Ein Ausblenden Checkboxen - Ende
 
             $noneVisible = array_merge(array_flip(['A', 'K', 'E', 'B', 'D', 'I', 'S']), $noneVisible);
-            unset($noneVisible['I']);
-            unset($noneVisible['D']);
-            unset($noneVisible['B']);
+            unset($noneVisible['I'], $noneVisible['D'], $noneVisible['B']);
 
             foreach($noneVisible as $lokus=>$notVisible){
                 $nameVariable = strtolower($lokus).'Lokus';
@@ -272,20 +282,20 @@
                         if ($iLokus[1] === 'II') {
                             $content .= '
                                 <div class="iLokus iLokusUE">
-                                    <img src="images/EE_dunkel.png" alt="I-Lokus" style="height:300px;">
+                                    <img src="images/DYDY_dunkel.png" alt="I-Lokus" style="height:300px;">
                                 </div>
                             ';
                         } else if ($iLokus[1] === 'Ii' || $iLokus[1] === 'iI') {
                             $content .= '
                                 <div class="iLokus iLokusUE">
-                                    <img src="images/EE_mittel.png" alt="I-Lokus" style="height:300px;">
+                                    <img src="images/DYDY_mittel.png" alt="I-Lokus" style="height:300px;">
                                 </div>
                             ';
                         }
                         else if($iLokus[1] === 'ii') {
                             $content .= '
                                 <div class="iLokus iLokusUE">
-                                    <img src="images/EE_hell.png" alt="I-Lokus" style="height:300px;">
+                                    <img src="images/ee.png" alt="I-Lokus" style="height:300px;">
                                 </div>
                             ';
                         }
@@ -330,19 +340,19 @@
                             </div>
                         ';
 
-                        if ($iLokus[1] === 'II') {
+                        if (${$nameVariable}[1]  !== 'aa' && $iLokus[1] === 'II') {
                             $content .= '
                                 <div class="iLokus iLokusUA">
                                     <img src="images/' . ${$nameVariable}[1] . '_dunkel.png" alt="I-Lokus" style="height:300px;">
                                 </div>
                             ';
-                        } else if ($iLokus[1] === 'Ii' || $iLokus[1] === 'iI') {
+                        } else if (${$nameVariable}[1]  !== 'aa' &&  ($iLokus[1] === 'Ii' || $iLokus[1] === 'iI')) {
                             $content .= '
                                 <div class="iLokus iLokusUA">
                                     <img src="images/' . ${$nameVariable}[1] . '_mittel.png" alt="I-Lokus" style="height:300px;">
                                 </div>
                             ';
-                        } else if($iLokus[1] === 'ii') {
+                        } else if(${$nameVariable}[1]  !== 'aa' && $iLokus[1] === 'ii') {
                             $content .= '
                                 <div class="iLokus iLokusUA">
                                     <img src="images/' . ${$nameVariable}[1] . '_hell.png" alt="I-Lokus" style="height:300px;">
@@ -387,7 +397,7 @@
             <td>1te Äußerste Ebene</td>
             <td>E</td>
             <td>N(E) > e1</td>
-            <td>Weiß</td>
+            <td>Rezessives Rot (wird im Zusammenspiel mit ILokus = ii zu Weiß)</td>
 <!--            <td><a href="https://laboklin.com/en/products/genetics/coat-colour-coat-structure-coat-length/dog/e-locus-e1-yellow-lemon-red-cream-apricot/">E Lokus</a></td>-->
         </tr>
         <tr>
